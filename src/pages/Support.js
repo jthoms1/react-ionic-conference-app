@@ -1,39 +1,54 @@
 import React, { Component } from 'react';
 import './Form.scss'
 
+import {
+  IonPage,
+  IonContent,
+  IonHeader,
+  IonNavbar,
+  IonButtons,
+  IonButton,
+  IonIcon,
+  IonTitle,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonTextarea
+} from '../ionic-components';
+
 export default class Support extends Component {
   submit() {}
   render() {
     return (
-      <ion-page class="page-user">
-        <ion-header>
-          <ion-navbar>
-            <ion-buttons slot="start">
-              <ion-button menuToggle>
-                <ion-icon slot="icon-only" name="menu"></ion-icon>
-              </ion-button>
-            </ion-buttons>
-            <ion-title>Support</ion-title>
-          </ion-navbar>
-        </ion-header>
+      <IonPage className="page-user">
+        <IonHeader>
+          <IonNavbar>
+            <IonButtons slot="start">
+              <IonButton menuToggle>
+                <IonIcon slot="icon-only" name="menu"></IonIcon>
+              </IonButton>
+            </IonButtons>
+            <IonTitle>Support</IonTitle>
+          </IonNavbar>
+        </IonHeader>
 
-        <ion-content>
+        <IonContent>
           <div className="logo">
             <img src="/assets/img/appicon.svg" alt="Ionic Logo"/>
           </div>
           <form onSubmit={() => this.submit()}>
-            <ion-list no-lines>
-              <ion-item>
-                <ion-label stacked color="primary">Enter your support message below</ion-label>
-                <ion-textarea name="supportQuestion" rows="6" required></ion-textarea>
-              </ion-item>
-            </ion-list>
+            <IonList no-lines>
+              <IonItem>
+                <IonLabel stacked color="primary">Enter your support message below</IonLabel>
+                <IonTextarea name="supportQuestion" rows="6" required></IonTextarea>
+              </IonItem>
+            </IonList>
             <div>
-              <ion-button block type="submit">Submit</ion-button>
+              <IonButton block type="submit">Submit</IonButton>
             </div>
           </form>
-        </ion-content>
-      </ion-page>
+        </IonContent>
+      </IonPage>
     );
   }
 }

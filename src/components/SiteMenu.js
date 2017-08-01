@@ -1,5 +1,17 @@
 import React from 'react';
-import IonButton from './IonButton';
+
+import {
+  IonMenu,
+  IonToolbar,
+  IonButton,
+  IonListHeader,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonTitle,
+  IonList,
+  IonItem,
+} from '../ionic-components';
 
 export default ({appPages, loggedOutPages, loggedInPages, isAuthenticated, history}) => {
 
@@ -8,44 +20,44 @@ export default ({appPages, loggedOutPages, loggedInPages, isAuthenticated, histo
       .filter(route => !!route.path)
       .map((p) => (
         <IonButton key={p.title} path={p.path}>
-          <ion-icon slot="start" name={p.icon}></ion-icon>
+          <IonIcon slot="start" name={p.icon}></IonIcon>
           {p.title}
         </IonButton>
       ));
   }
 
   return (
-    <ion-menu>
-      <ion-header>
-        <ion-toolbar>
-          <ion-title>Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>,
-      <ion-content class="outer-content">
-        <ion-list>
-          <ion-list-header>
+    <IonMenu>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Menu</IonTitle>
+        </IonToolbar>
+      </IonHeader>,
+      <IonContent className="outer-content">
+        <IonList>
+          <IonListHeader>
             Navigate
-          </ion-list-header>
+          </IonListHeader>
           { renderlistItems(appPages) }
-        </ion-list>
-        <ion-list>
-          <ion-list-header>
+        </IonList>
+        <IonList>
+          <IonListHeader>
             Account
-          </ion-list-header>
+          </IonListHeader>
           { isAuthenticated ?
             renderlistItems(loggedOutPages) :
             renderlistItems(loggedInPages) }
-        </ion-list>
-        <ion-list>
-          <ion-list-header>
+        </IonList>
+        <IonList>
+          <IonListHeader>
             Tutorial
-          </ion-list-header>
-          <ion-item menuClose onClick={() => {}}>
-            <ion-icon slot="start" name="hammer"></ion-icon>
+          </IonListHeader>
+          <IonItem menuClose onClick={() => {}}>
+            <IonIcon slot="start" name="hammer"></IonIcon>
             Show Tutorial
-          </ion-item>
-        </ion-list>
-      </ion-content>
-    </ion-menu>
+          </IonItem>
+        </IonList>
+      </IonContent>
+    </IonMenu>
   );
 }

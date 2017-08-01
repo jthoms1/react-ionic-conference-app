@@ -3,8 +3,7 @@ import {
   searchSessionsByName,
   addFavoriteSession,
   removeFavoriteSession,
-  addFavoriteFilter,
-  removeFavoriteFilter
+  updateFavoriteFilter
 } from '../actions';
 
 const getVisibleSessions = (sessions, trackFilters, searchText, favoriteSessions, filterFavorites) => {
@@ -23,7 +22,7 @@ const getVisibleSessions = (sessions, trackFilters, searchText, favoriteSessions
   }
 
   if (filterFavorites) {
-    filteredSessions = filteredSessions.filter(session => favoriteSessions.contains(session.id));
+    filteredSessions = filteredSessions.filter(session => favoriteSessions.includes(session.id));
   }
 
   return filteredSessions;
@@ -47,9 +46,7 @@ const mapDispatchToProps = (dispatch) => {
     searchSessionsByName: (text) => dispatch(searchSessionsByName(text)),
     addFavoriteSession: (sessionId) => dispatch(addFavoriteSession(sessionId)),
     removeFavoriteSession: (sessionId) => dispatch(removeFavoriteSession(sessionId)),
-    updateFavoriteFilter: (shouldFilter) => (
-      shouldFilter ? dispatch(addFavoriteFilter()) : dispatch(removeFavoriteFilter())
-    )
+    updateFavoriteFilter: (shouldFilter) => dispatch(updateFavoriteFilter(shouldFilter))
   }
 }
 

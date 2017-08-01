@@ -17,6 +17,7 @@ let store = createStore(conferenceApp, {
       searchText: '',
       trackFilters: [],
       sessions,
+      favoriteSessions: [],
       filterFavorites: false
     },
     speakers: speakers
@@ -29,10 +30,12 @@ store.subscribe(() => {
     user: store.getState().user,
     tutorial: store.getState().tutorial
   });
-})
+});
 
 ReactDOM.render((
+  <div>
   <Provider store={store}>
     <App />
   </Provider>
+  </div>
 ), document.getElementById('root'));
